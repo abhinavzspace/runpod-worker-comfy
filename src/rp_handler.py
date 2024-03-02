@@ -1,5 +1,5 @@
 import runpod
-from runpod.serverless.utils import rp_upload
+from runpod.serverless.utils import rp_upload, rp_download
 import json
 import urllib.request
 import urllib.parse
@@ -55,11 +55,11 @@ def validate_input(job_input):
     images = job_input.get("images")
     if images is not None:
         if not isinstance(images, list) or not all(
-            "name" in image and "image" in image for image in images
+            ("name" in image and "image" in image) or isinstance(image, str) for image in images
         ):
             return (
                 None,
-                "'images' must be a list of objects with 'name' and 'image' keys",
+                "'images' must be a list of objects with 'name' and 'image' keys or list of urls",
             )
 
     # Return validated data and no error
@@ -304,11 +304,16 @@ def handler(job):
         COMFY_API_AVAILABLE_INTERVAL_MS,
     )
 
-    # Upload images if they exist
-    upload_result = upload_images(images)
+    if all(isinstance(image, str) for image in images):
+        images_paths = rp_download.download_files_from_urls(job["id"], images)
+    else:
+        # Upload images if they exist
+        upload_result = upload_images(images)
 
-    if upload_result["status"] == "error":
-        return upload_result
+        if upload_result["status"] == "error":
+            return upload_result
+
+    # TODO: Embed these images_paths inside workflow
 
     # Queue the workflow
     try:
