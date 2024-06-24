@@ -15,9 +15,6 @@ RUN apt-get update && apt-get install -y \
     git \
     wget
 
-# REFERENCE: https://stackoverflow.com/a/68666500
-RUN apt-get update && apt-get install libgl1
-
 # Clean up to reduce image size
 RUN apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
@@ -70,6 +67,9 @@ RUN pip3 install runpod requests
 
 # For instantid
 RUN pip3 install insightface onnxruntime onnxruntime-gpu
+
+# REFERENCE: https://stackoverflow.com/a/69125651
+RUN pip3 install opencv-contrib-python-headless
 
 # Support for the network volume
 ADD src/extra_model_paths.yaml ./
