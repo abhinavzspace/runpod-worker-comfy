@@ -29,7 +29,7 @@ ARG SKIP_DEFAULT_MODELS
 RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/checkpoints/sd_xl_base_1.0.safetensors https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors; fi
 RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/vae/sdxl_vae.safetensors https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors; fi
 RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/vae/sdxl-vae-fp16-fix.safetensors https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors; fi
-RUN wget -O models/checkpoints/zavychromaxl_v80.safetensors https://huggingface.co/tiddu/checkpoints/resolve/main/zavychromaxl_v80.safetensors
+RUN wget -O models/checkpoints/zavychromaxl_v80.safetensors --header="Authorization: Bearer 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" https://huggingface.co/tiddu/checkpoints/resolve/main/zavychromaxl_v80.safetensors
 RUN wget -O models/controlnet/diffusion_pytorch_model.safetensors https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
 RUN bash -c 'mkdir -p /comfyui/models/instantid'
 RUN wget -O models/instantid/ip-adapter.bin https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
@@ -39,10 +39,10 @@ RUN wget -O models/insightface/models/antelopev2/2d106det.onnx https://huggingfa
 RUN wget -O models/insightface/models/antelopev2/genderage.onnx https://huggingface.co/MonsterMMORPG/tools/resolve/main/genderage.onnx
 RUN wget -O models/insightface/models/antelopev2/glintr100.onnx https://huggingface.co/MonsterMMORPG/tools/resolve/main/glintr100.onnx
 RUN wget -O models/insightface/models/antelopev2/scrfd_10g_bnkps.onnx https://huggingface.co/MonsterMMORPG/tools/resolve/main/scrfd_10g_bnkps.onnx
-RUN wget -O models/loras/ExpressionsXL.safetensors https://huggingface.co/tiddu/loras/resolve/main/ExpressionsXL.safetensors
-RUN wget -O models/loras/SDXLHighDetail_v5.safetensors https://huggingface.co/tiddu/loras/resolve/main/SDXLHighDetail_v5.safetensors
-RUN wget -O models/loras/epiCPhotoXL.safetensors https://huggingface.co/tiddu/loras/resolve/main/epiCPhotoXL.safetensors
-RUN wget -O models/loras/sdxl_lightning_4step_lora.safetensors https://huggingface.co/tiddu/loras/resolve/main/sdxl_lightning_4step_lora.safetensors
+RUN wget -O models/loras/ExpressionsXL.safetensors --header="Authorization: Bearer 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" https://huggingface.co/tiddu/loras/resolve/main/ExpressionsXL.safetensors
+RUN wget -O models/loras/SDXLHighDetail_v5.safetensors --header="Authorization: Bearer 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" https://huggingface.co/tiddu/loras/resolve/main/SDXLHighDetail_v5.safetensors
+RUN wget -O models/loras/epiCPhotoXL.safetensors --header="Authorization: Bearer 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" https://huggingface.co/tiddu/loras/resolve/main/epiCPhotoXL.safetensors
+RUN wget -O models/loras/sdxl_lightning_4step_lora.safetensors --header="Authorization: Bearer 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" https://huggingface.co/tiddu/loras/resolve/main/sdxl_lightning_4step_lora.safetensors
 
 # Add custom nodes
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager
