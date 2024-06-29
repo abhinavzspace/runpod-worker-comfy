@@ -64,7 +64,7 @@ COPY models/loras/ExpressionsXL.safetensors models/loras/ExpressionsXL.safetenso
 
 
 # Add custom nodes
-RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager
+# RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager
 RUN git clone https://github.com/WASasquatch/was-node-suite-comfyui.git custom_nodes/was-node-suite-comfyui
 RUN git clone https://github.com/rgthree/rgthree-comfy.git custom_nodes/rgthree-comfy
 RUN git clone https://github.com/cubiq/ComfyUI_InstantID.git custom_nodes/ComfyUI_InstantID
@@ -74,6 +74,8 @@ RUN git clone https://github.com/sipherxyz/comfyui-art-venture.git custom_nodes/
 RUN git clone https://github.com/kijai/ComfyUI-KJNodes.git custom_nodes/ComfyUI-KJNodes
 RUN git clone https://github.com/bash-j/mikey_nodes.git custom_nodes/mikey_nodes
 RUN git clone https://github.com/chflame163/ComfyUI_LayerStyle.git custom_nodes/ComfyUI_LayerStyle
+RUN git clone https://github.com/jags111/efficiency-nodes-comfyui.git custom_nodes/efficiency-nodes-comfyui
+RUN git clone https://github.com/theUpsider/ComfyUI-Logic.git custom_nodes/ComfyUI-Logic
 
 # Install ComfyUI dependencies
 RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 \
